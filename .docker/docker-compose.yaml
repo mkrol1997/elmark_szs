@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  pim:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    image: elmark_szs:dev_v1.0
+    container_name: elmark_szs_dev_v1
+    command: ["python", "run.py"]
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: ../.env
+        required: true
+    volumes:
+      - ../:/app
